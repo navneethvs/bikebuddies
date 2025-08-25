@@ -1,0 +1,98 @@
+/* Full-page background with image + gradient */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top, #c5a802, #d43f8d), url("../images/bg.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Back button */
+.back-btn {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.back-btn:hover {
+    background-color: #e56b3d;
+}
+
+/* Profile container */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Card styling */
+.card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Profile image */
+.card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 10px;
+    border: 4px solid white;
+}
+
+/* Headings */
+h2 {
+    margin: 15px 0;
+    color: #333;
+}
+
+/* Info list */
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 15px 0;
+}
+ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Social icons */
+.social-icons a {
+    text-decoration: none;
+    font-size: 20px;
+    margin: 5px;
+    color: #d43f8d;
+    transition: 0.3s;
+}
+.social-icons a:hover {
+    color: #c5a802;
+}
+
+/* Contact button */
+.contact-btn {
+    background-color: #ff7f50;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.contact-btn:hover {
+    background-color: #e56b3d;
+}

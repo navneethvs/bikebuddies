@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Available Workers</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 60%;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+    button {
+      padding: 6px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Workers at Your Pickup Location</h2>
+
+  <table>
+    <tr>
+      <th>Worker</th>
+      <th>Pickup Location</th>
+      <th>Action</th>
+    </tr>
+    {% for match in matches %}
+      <tr>
+        <td>{{ match.worker }}</td>
+        <td>{{ match.location }}</td>
+        <td>
+          <form method="post" action="{% url 'booking_page' match.worker %}">
+            {% csrf_token %}
+            <button type="submit">Book</button>
+          </form>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="3">No workers available at your pickup location</td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

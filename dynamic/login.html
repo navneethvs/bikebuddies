@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style log.css' %}">
+<form action="log" method="post">
+  {% csrf_token %}
+  <h2 style="color: chocolate;">{{error}}</h2>
+  <h2 style="color: chocolate;">{{success}}</h2>
+  <fieldset class="container">
+  <legend><i class="fa fa-empire fa-4x"></i></legend>
+  <div class="wrapper">
+    <label for="tbUnm" class="lbl-tb"><i class="fa fa-user fa-fw"></i> Username</label>
+    <br />
+    <input id="tbUnm" type="text" name="un" class="frm-ctrl tb" spellcheck="false" autocomplete="off" />
+    <p class="hint">This name will be your unique identity on the website</p>
+  </div>
+  <div class="wrapper">
+    <label for="tbPwd1" class="lbl-tb"><i class="fa fa-unlock fa-fw"></i> Password</label>
+    <br />
+    <input id="tbPwd1" name="ps" type="password" class="frm-ctrl tb" />
+    <p class="hint">The password should have at least lowercase characters, uppercase characters, numbers and symbols</p>
+  </div>
+    <div class="input_field select_option">
+                <select name="gen" required>
+                  <option value="user" selected>USER</option>  <!-- 👈 Default selected -->
+                  <option value="worker">WORKER</option>
+                  <option value="admin">ADMIN</option>
+                </select>
+                  <div class="select_arrow"></div>
+                </div>
+    <div class="wrapper">
+      <input type="submit" class="frm-ctrl btn" />
+    </div>
+  </fieldset>
+</form>

@@ -1,0 +1,57 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<table>
+<style>
+  .back-btn {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .back-btn:hover {
+    background-color: #e56b3d;
+  }
+</style>
+
+<button class="back-btn" onclick="history.back()">← Go Back</button>
+  <caption>Tables</caption>
+  <thead>
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in data %}
+         <tr>
+      <td>{{m.fn}}</td>
+      <td>{{m.ln}}</td>
+      <td>{{m.em}}</td>
+      <td>{{m.gen}}</td>
+      <td>{{m.un}}</td>
+      <td>Status: 
+      {% if m.is_approved %}
+        ✅ Approved
+      {% elif m.is_approved is False %}
+        ❌ Rejected
+      {% else %}
+        Pending
+      {% endif %}
+      </td>
+       <td><a href="{% url 'approve_w' m.id %}">✅</a>
+      <a href="{% url 'reject_w' m.id %}">❌</a></td>
+      <td>
+        <button><a href="/delete?idn={{m.id}}">Delete</a></button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </tbody>

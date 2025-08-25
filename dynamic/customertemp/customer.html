@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Vehicle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Your stylesheets -->
+  <link href="{% static 'css/booking.css' %}" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="font/flaticon.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+  <!-- Profile icon -->
+<a href="{% url 'cprofile' %}" class="profile-icon about-icon">
+  <i class="fa fa-user"></i>
+  <span>About</span>
+</a>
+
+<!-- Feedback icon -->
+<a href="{% url 'add_feedback' %}" class="profile-icon feedback-icon">
+  <i class="fa fa-comment"></i>
+  <span>Feedback</span>
+</a>
+
+<style>
+  /* Shared style */
+  .profile-icon {
+    position: fixed;
+    left: 20px;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+    transition: background 0.3s ease, color 0.3s ease;
+    z-index: 1000;
+  }
+
+  .profile-icon:hover {
+    background: #f0f0f0;
+    color: #007BFF;
+  }
+
+  .profile-icon span {
+    font-size: 14px;
+  }
+
+  /* Specific positioning */
+  .about-icon {
+    top: 15px;
+  }
+
+  .feedback-icon {
+    top: 60px; /* place below "About" */
+  }
+</style>
+
+
+  <div class="container">
+    <div class="book">
+      <div class="description">
+        <h2 style="color: chocolate;">{{success}}</h2>
+        <h2 style="color: chocolate;">{{error}}</h2>
+
+        <h1><strong>Book</strong> your Ride</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+        </p>
+
+        <div class="quote">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+
+        <ul>
+          <li>Super reliable service</li>
+          <li>24/7 customer service</li>
+          <li>GPS tracking and help</li>
+          <li>Wide range vehicle</li>
+        </ul>
+      </div>
+
+      <div class="form">
+        <form action="custom" method="post">
+          {% csrf_token %}
+          <div class="inpbox">
+            <span class="flaticon-location"></span>
+            <input type="text" name="dr" placeholder="Drop Location">
+          </div>
+          <div class="inpbox">
+            <span class="flaticon-user"></span>
+            <input type="text" name="na" placeholder="Full Name">
+          </div>
+          <div class="inpbox">
+            <span>Extra Luggage</span>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary">
+                <input type="radio" name="op" value="Yes"> YES
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="op" value="No"> NO
+              </label>
+            </div>
+          </div>
+
+          <button class="subt">Submit</button>
+          <button class="button" type="reset">Reset</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

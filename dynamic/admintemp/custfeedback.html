@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/custfeedback.css' %}">
+
+<!-- Back button -->
+<button class="back-btn" onclick="history.back()">← Go Back</button>
+
+<h2 style="text-align:center;">Feedback List</h2>
+
+<ul class="feedback-list">
+  {% for fb in feedbacks %}
+    <li class="feedback-item">
+      <div class="feedback-header">
+        <span>{{ fb.user.fn }} {{ fb.user.ln }}</span>
+        <span class="feedback-date">{{ fb.submitted_at|date:"Y-m-d H:i" }}</span>
+      </div>
+      <div class="feedback-rating">⭐ {{ fb.rating }}/5</div>
+      <p class="feedback-message">{{ fb.message }}</p>
+      <a href="/delete?idn={{ fb.id }}" class="delete-btn">Delete</a>
+    </li>
+  {% empty %}
+    <li class="feedback-item" style="text-align:center; color:#777;">
+      No feedback yet.
+    </li>
+  {% endfor %}
+</ul>

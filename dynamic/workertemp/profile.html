@@ -1,0 +1,30 @@
+<h2>User Profile</h2>
+<ul>
+  <li><strong>First Name:</strong> {{ user.fn }}</li>
+  <li><strong>Last Name:</strong> {{ user.ln }}</li>
+  <li><strong>Email:</strong> {{ user.em }}</li>
+  <li><strong>Role:</strong> {{ user.gen }}</li>
+  <li><strong>Username:</strong> {{ user.un }}</li>
+</ul>
+
+{% if user.gen == "worker" %}
+  <h2>Bikes Uploaded</h2>
+  <table border="1" cellpadding="8" style="margin:auto; text-align:center;">
+    <tr>
+      <th>Bike Name</th>
+      <th>Model</th>
+      <th>Photo</th>
+    </tr>
+    {% for b in bikes %}
+    <tr>
+      <td>{{ b.bnm }}</td>
+      <td>{{ b.bml }}</td>
+      <td><img src="{{ b.bimg.url }}" width="120"></td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3">No bikes uploaded yet.</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}

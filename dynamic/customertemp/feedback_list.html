@@ -1,0 +1,79 @@
+<h2 class="feedback-list-title">All Feedback</h2>
+
+<div class="feedback-list">
+  {% for fb in feedbacks %}
+    <div class="feedback-card">
+      <div class="feedback-header">
+        <strong>{{ fb.user.fn }} {{ fb.user.ln }}</strong>
+        <span class="feedback-date">{{ fb.submitted_at|date:"Y-m-d H:i" }}</span>
+      </div>
+      <div class="feedback-rating">
+        ⭐ {{ fb.rating }}/5
+      </div>
+      <p class="feedback-message">{{ fb.message }}</p>
+    </div>
+  {% empty %}
+    <p class="no-feedback">No feedback yet.</p>
+  {% endfor %}
+</div>
+
+<style>
+  .feedback-list-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #333;
+  }
+
+  .feedback-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feedback-card {
+    background: #fff;
+    padding: 18px 22px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feedback-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+  }
+
+  .feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .feedback-date {
+    font-size: 13px;
+    color: #777;
+  }
+
+  .feedback-rating {
+    color: #f39c12;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .feedback-message {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  .no-feedback {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+  }
+</style>

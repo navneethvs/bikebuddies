@@ -1,0 +1,90 @@
+<h2 class="feedback-title">Add Feedback</h2>
+
+{% if error %}
+  <p class="error-msg">{{ error }}</p>
+{% endif %}
+
+<form method="POST" class="feedback-form">
+  {% csrf_token %}
+
+  <label for="message">Your Feedback:</label>
+  <textarea name="message" rows="4" required></textarea>
+
+  <label for="rating">Rating (1 to 5):</label>
+  <select name="rating" required>
+    <option value="">--Select--</option>
+    <option value="1">1 - Very Bad</option>
+    <option value="2">2 - Bad</option>
+    <option value="3">3 - Average</option>
+    <option value="4">4 - Good</option>
+    <option value="5">5 - Excellent</option>
+  </select>
+
+  <button type="submit" class="btn-submit">Submit</button>
+</form>
+
+<style>
+  .feedback-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .error-msg {
+    color: #d9534f;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .feedback-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .feedback-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+  }
+
+  .feedback-form textarea,
+  .feedback-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  .feedback-form textarea:focus,
+  .feedback-form select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0px 0px 6px rgba(0,123,255,0.3);
+  }
+
+  .btn-submit {
+    padding: 12px;
+    background: #007BFF;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  .btn-submit:hover {
+    background: #0056b3;
+  }
+</style>

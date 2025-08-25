@@ -1,0 +1,43 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .back-btn {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .back-btn:hover {
+    background-color: #e56b3d;
+  }
+</style>
+
+<button class="back-btn" onclick="history.back()">← Go Back</button>
+<div class="card">
+  <img src="img.jpg" style="width:50%">
+  <body>
+  <h2>User Profile</h2>
+
+  {% if error %}
+    <p>{{ error }}</p>
+  {% else %}
+    <ul>
+      <li><strong>First Name:</strong> {{ user.fn }}</li>
+      <li><strong>Last Name:</strong> {{ user.ln }}</li>
+      <li><strong>Email:</strong> {{ user.em }}</li>
+      <li><strong>Type:</strong> {{ user.gen }}</li>
+      <li><strong>Username:</strong> {{ user.un }}</li>
+    </ul>
+  {% endif %}
+</body>
+  <a href="#"><i class="fa fa-dribbble"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <p><button>Contact</button></p>
+</div>

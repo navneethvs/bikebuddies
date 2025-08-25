@@ -1,0 +1,138 @@
+
+
+{% if bookings %}
+  <table>
+    <caption>Ride Bookings By<h2> {{ customer.fn }}</h2></caption>
+    <thead>
+      <tr>
+        <th>Ride ID</th>
+        <th>Pickup</th>
+        <th>Drop</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in bookings %}
+        <tr>
+          <td data-label="Ride ID">{{ m.id }}</td>
+          <td data-label="Pickup">{{ m.pick }}</td>
+          <td data-label="Drop">{{ m.drop }}</td>
+          <td data-label="Status">
+            {% if m.is_approved %}
+              ✅ Approved
+            {% elif m.is_approved is False %}
+              ❌ Rejected
+            {% else %}
+              Pending
+            {% endif %}
+          </td>
+          <td data-label="Actions">
+            <a href="{% url 'approve_request' m.id %}">✅</a>
+            <a href="{% url 'reject_user' m.id %}">❌</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No rides from {{ customer.un }} yet.</p>
+{% endif %}
+
+<p><a href="{% url 'worker_dashboard' %}">⬅ Back to customers list</a></p>
+
+
+<style>
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+button {
+  background: #f44336;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+</style>
